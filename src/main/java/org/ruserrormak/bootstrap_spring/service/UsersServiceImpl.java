@@ -67,6 +67,12 @@ public class UsersServiceImpl implements UsersService {
     public void saveUser(Users user, String[] roles) {
 
         Set<Roles> userRoles = new HashSet<>();
+
+        Roles userRole = rolesRepository.findByName("ROLE_USER");
+        if (userRole != null) {
+            userRoles.add(userRole);
+        }
+
         if (roles != null) {
             for (String roleName : roles) {
                 Roles role = rolesRepository.findByName(roleName);
@@ -109,6 +115,12 @@ public class UsersServiceImpl implements UsersService {
         }
 
         Set<Roles> userRoles = new HashSet<>();
+
+        Roles userRole = rolesRepository.findByName("ROLE_USER");
+        if (userRole != null) {
+            userRoles.add(userRole);
+        }
+
         if (roles != null) {
             for (String roleName : roles) {
                 Roles role = rolesRepository.findByName(roleName);
